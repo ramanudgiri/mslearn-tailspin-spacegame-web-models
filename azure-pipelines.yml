@@ -6,10 +6,20 @@ variables:
   dotnetSdkVersion: '5.x'
 
 steps:
+- checkout: self
+  persistCredentials: true
+
+steps:
+- checkout: self
+  clean: true
+
+steps:
 - task: UseDotNet@2
   displayName: 'Use .NET SDK $(dotnetSdkVersion)'
   inputs:
     version: '$(dotnetSdkVersion)'
+
+
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
@@ -32,7 +42,7 @@ steps:
     arguments: '--no-build --configuration $(buildConfiguration)'
     versioningScheme: byPrereleaseNumber
     majorVersion: '1'
-    minorVersion: '0'
+    minorVersion: '1'
     patchVersion: '0'
  
 - task: NuGetCommand@2
