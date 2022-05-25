@@ -6,14 +6,7 @@ variables:
   dotnetSdkVersion: '5.x'
 
 steps:
-- checkout: self
-  persistCredentials: true
-
-steps:
-- checkout: self
-  clean: true
-
-steps:
+ 
 - task: UseDotNet@2
   displayName: 'Use .NET SDK $(dotnetSdkVersion)'
   inputs:
